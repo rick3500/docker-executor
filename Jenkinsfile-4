@@ -1,0 +1,17 @@
+pipeline {
+    agent {
+        docker {
+            label 'docker'
+            image 'node:16-alpine'
+            args '-e NODE_ENV=development -p 4444:4444 -p 5900:5900 --shm-size 2g'
+        }
+    }
+    stages {
+        stage('Build') {
+            steps {
+                // Your build steps here
+                sh 'node --version'
+            }
+        }
+    }
+}
